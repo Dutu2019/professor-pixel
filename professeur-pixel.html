@@ -1,0 +1,1668 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Professeur Pixel — Le soutien scolaire intelligent pour chaque enfant du
+      Québec
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --black: #0a0a0a;
+        --white: #fafafa;
+        --gray-100: #f4f4f4;
+        --gray-200: #e8e8e8;
+        --gray-400: #a0a0a0;
+        --gray-600: #666;
+        --yellow: #f5c400;
+        --yellow-dark: #d4a800;
+        --yellow-light: #fff8d6;
+      }
+
+      /* Ajout de scroll-padding-top pour éviter que la nav fixe ne cache les titres de section */
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 100px;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--white);
+        color: var(--black);
+        font-size: 16px;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5%;
+        height: 68px;
+        background: rgba(250, 250, 250, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--gray-200);
+      }
+      .nav-logo {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        letter-spacing: -0.5px;
+        color: var(--black);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .nav-logo-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        background: var(--yellow);
+        border-radius: 50%;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 120px 5% 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg-mark {
+        position: absolute;
+        top: -80px;
+        right: -120px;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        border: 80px solid var(--yellow-light);
+        pointer-events: none;
+      }
+      .hero-bg-mark2 {
+        position: absolute;
+        bottom: 40px;
+        left: -60px;
+        width: 200px;
+        height: 200px;
+        background: var(--yellow-light);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--yellow-light);
+        border: 1px solid var(--yellow);
+        border-radius: 100px;
+        padding: 5px 14px;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--yellow-dark);
+        margin-bottom: 28px;
+        width: fit-content;
+        animation: fadeUp 0.6s ease both;
+      }
+      .hero-tag::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: var(--yellow);
+        border-radius: 50%;
+      }
+      /* Ajustement du line-height et ajout de padding pour éviter que l'italique et le stroke ne soient coupés */
+      .hero h1 {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: clamp(44px, 6.5vw, 88px);
+        line-height: 1.1;
+        letter-spacing: -3px;
+        max-width: 860px;
+        padding-bottom: 10px;
+        animation: fadeUp 0.6s 0.1s ease both;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: transparent;
+        -webkit-text-stroke: 2px var(--black);
+      }
+      .hero h1 .highlight {
+        position: relative;
+        font-style: normal;
+        color: var(--black);
+      }
+      .hero h1 .highlight::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 6px;
+        width: 100%;
+        height: 10px;
+        background: var(--yellow);
+        z-index: -1;
+        border-radius: 2px;
+      }
+      .hero-sub {
+        font-size: 18px;
+        color: var(--gray-600);
+        max-width: 520px;
+        margin-top: 28px;
+        line-height: 1.7;
+        font-weight: 300;
+        animation: fadeUp 0.6s 0.2s ease both;
+      }
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 44px;
+        flex-wrap: wrap;
+        animation: fadeUp 0.6s 0.3s ease both;
+      }
+      .btn-primary {
+        background: var(--black);
+        color: var(--white);
+        padding: 14px 28px;
+        border-radius: 8px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn-primary:hover {
+        background: #222;
+        transform: translateY(-1px);
+      }
+      .btn-ghost {
+        color: var(--black);
+        font-size: 15px;
+        font-weight: 400;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border-bottom: 1px solid var(--gray-200);
+        padding-bottom: 2px;
+        transition: border-color 0.2s;
+      }
+      .btn-ghost:hover {
+        border-color: var(--black);
+      }
+      .hero-stats {
+        display: flex;
+        gap: 48px;
+        margin-top: 72px;
+        flex-wrap: wrap;
+        animation: fadeUp 0.6s 0.4s ease both;
+      }
+      .stat-num {
+        font-family: "Syne", sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -1px;
+      }
+      .stat-num span {
+        color: var(--yellow);
+      }
+      .stat-label {
+        font-size: 13px;
+        color: var(--gray-400);
+        margin-top: 2px;
+        font-weight: 300;
+      }
+
+      /* ── STRIP ── */
+      .strip {
+        background: var(--black);
+        padding: 18px 5%;
+        display: flex;
+        overflow: hidden;
+      }
+      .strip-inner {
+        display: flex;
+        gap: 64px;
+        animation: marquee 28s linear infinite;
+        white-space: nowrap;
+      }
+      .strip-item {
+        font-family: "Syne", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+      }
+      .strip-dot {
+        color: var(--yellow);
+        font-size: 18px;
+      }
+
+      /* ── SHARED ── */
+      section {
+        padding: 100px 5%;
+      }
+      .section-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gray-400);
+        margin-bottom: 12px;
+      }
+      .section-title {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(30px, 4vw, 50px);
+        font-weight: 700;
+        letter-spacing: -1.5px;
+        line-height: 1.1;
+      }
+
+      /* ── PROBLÈME ── */
+      .problem {
+        background: var(--white);
+      }
+      .problem-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        margin-top: 56px;
+        align-items: start;
+      }
+      .problem-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .problem-card {
+        background: var(--gray-100);
+        padding: 24px 28px;
+        display: flex;
+        gap: 18px;
+        align-items: flex-start;
+        transition: background 0.2s;
+      }
+      .problem-card:hover {
+        background: var(--yellow-light);
+      }
+      .problem-icon {
+        font-size: 24px;
+        flex-shrink: 0;
+        padding-top: 2px;
+      }
+      .problem-card h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+        margin-bottom: 4px;
+      }
+      .problem-card p {
+        font-size: 13px;
+        color: var(--gray-600);
+        font-weight: 300;
+        line-height: 1.6;
+      }
+      .problem-quote-box {
+        background: var(--black);
+        border-radius: 16px;
+        padding: 40px;
+        color: var(--white);
+        position: sticky;
+        top: 100px;
+      }
+      .problem-quote {
+        font-family: "DM Sans", sans-serif;
+        font-style: italic;
+        font-size: 18px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 20px;
+        font-weight: 300;
+      }
+      .problem-quote-attr {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 32px;
+      }
+      .problem-quote-attr strong {
+        color: var(--yellow);
+        font-weight: 600;
+      }
+      .checklist {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .check-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .check-item::before {
+        content: "✓";
+        width: 22px;
+        height: 22px;
+        background: var(--yellow);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--black);
+        flex-shrink: 0;
+        line-height: 22px;
+        text-align: center;
+      }
+
+      /* ── SOLUTION ── */
+      .solution {
+        background: var(--gray-100);
+      }
+      .solution-header {
+        margin-bottom: 56px;
+      }
+      .solution-sub {
+        font-size: 15px;
+        color: var(--gray-600);
+        font-weight: 300;
+        max-width: 520px;
+        margin-top: 12px;
+        line-height: 1.7;
+      }
+      .solution-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+      }
+      .solution-card {
+        background: var(--white);
+        padding: 36px 28px;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s;
+      }
+      .solution-card:hover {
+        transform: translateY(-4px);
+      }
+      .solution-icon {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+      .solution-card h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+        margin-bottom: 8px;
+      }
+      .solution-card p {
+        font-size: 13px;
+        color: var(--gray-600);
+        font-weight: 300;
+        line-height: 1.65;
+      }
+
+      /* ── COMMENT ── */
+      .how {
+        background: var(--white);
+      }
+      .how-header {
+        margin-bottom: 60px;
+      }
+      .how-header .section-title em {
+        font-style: italic;
+        color: var(--yellow);
+      }
+      .how-steps-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2px;
+        position: relative;
+      }
+      .how-steps-row::before {
+        content: "";
+        position: absolute;
+        top: 32px;
+        left: calc(12.5%);
+        right: calc(12.5%);
+        height: 1px;
+        background: var(--gray-200);
+        z-index: 0;
+      }
+      .how-step {
+        padding: 0 16px 0 0;
+        position: relative;
+        z-index: 1;
+      }
+      .how-step-circle {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: var(--black);
+        color: var(--white); /* Rendre les icônes visibles sur fond noir */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+        border: 3px solid var(--white);
+        outline: 2px solid var(--black);
+      }
+      .how-step-num {
+        font-family: "Syne", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gray-400);
+        margin-bottom: 6px;
+      }
+      .how-step h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+        margin-bottom: 6px;
+      }
+      .how-step p {
+        font-size: 13px;
+        color: var(--gray-600);
+        font-weight: 300;
+        line-height: 1.6;
+      }
+
+      /* ── POUR QUI ── */
+      .audience {
+        background: var(--gray-100);
+      }
+      .audience-header {
+        margin-bottom: 48px;
+      }
+      .audience-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .audience-card {
+        background: var(--white);
+        border-radius: 12px;
+        border: 1px solid var(--gray-200);
+        padding: 36px;
+        transition: border-color 0.2s;
+      }
+      .audience-card:hover {
+        border-color: var(--yellow);
+      }
+      .audience-icon {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+      .audience-card h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 10px;
+      }
+      .audience-card > p {
+        font-size: 14px;
+        color: var(--gray-600);
+        font-weight: 300;
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+      .audience-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .audience-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 400;
+        list-style: none;
+      }
+      .audience-list li::before {
+        content: "✓";
+        color: var(--yellow-dark);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      /* ── SUBSCRIBE ── */
+      .subscribe-section {
+        background: var(--black);
+        color: var(--white);
+        padding: 100px 5%;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .subscribe-section::before {
+        content: "";
+        position: absolute;
+        top: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 800px;
+        background: var(--yellow);
+        border-radius: 50%;
+        opacity: 0.04;
+        pointer-events: none;
+      }
+      .subscribe-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 100px;
+        padding: 6px 18px;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 28px;
+      }
+      .subscribe-badge span {
+        color: var(--yellow);
+        font-weight: 700;
+      }
+      .subscribe-section .section-title {
+        color: var(--white);
+        max-width: 640px;
+        margin: 0 auto 16px;
+        font-size: clamp(32px, 4.5vw, 58px);
+      }
+      .subscribe-section .section-title em {
+        font-style: italic;
+        color: var(--yellow);
+      }
+      .subscribe-desc {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.5);
+        max-width: 520px;
+        margin: 0 auto 36px;
+        font-weight: 300;
+        line-height: 1.7;
+      }
+      .perks-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 56px;
+      }
+      .perk-pill {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 100px;
+        padding: 8px 18px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .perk-pill::before {
+        content: "◆";
+        color: var(--yellow);
+        font-size: 7px;
+      }
+
+      /* progress bar */
+      .progress-wrap {
+        max-width: 560px;
+        margin: 0 auto 40px;
+      }
+      .progress-track {
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-bottom: 8px;
+      }
+      .progress-fill {
+        height: 100%;
+        width: 85.3%;
+        background: var(--yellow);
+        border-radius: 2px;
+        transition: width 1s ease;
+      }
+      .progress-label {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .progress-label strong {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* form */
+      .subscribe-form-box {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 560px;
+        margin: 0 auto;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .form-full {
+        grid-column: 1 / -1;
+      }
+      .form-label {
+        display: block;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 6px;
+      }
+      .form-input,
+      .form-select {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        padding: 12px 16px;
+        color: var(--white);
+        font-size: 14px;
+        font-family: "DM Sans", sans-serif;
+        outline: none;
+        transition: border-color 0.2s;
+        -webkit-appearance: none;
+      }
+      .form-input::placeholder {
+        color: rgba(255, 255, 255, 0.25);
+      }
+      .form-input:focus,
+      .form-select:focus {
+        border-color: var(--yellow);
+      }
+      .form-select option {
+        background: #1a1a1a;
+        color: var(--white);
+      }
+      .form-consent {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .form-consent input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        margin-top: 2px;
+        flex-shrink: 0;
+        accent-color: var(--yellow);
+      }
+      .form-consent p {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.35);
+        line-height: 1.6;
+      }
+      .form-consent a {
+        color: var(--yellow);
+        text-decoration: none;
+      }
+      .subscribe-btn {
+        width: 100%;
+        background: var(--yellow);
+        color: var(--black);
+        border: none;
+        border-radius: 8px;
+        padding: 16px;
+        font-family: "Syne", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.15s;
+      }
+      .subscribe-btn:hover {
+        background: #ffd633;
+        transform: translateY(-1px);
+      }
+      .subscribe-btn:active {
+        transform: scale(0.98);
+      }
+      .form-note {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.25);
+        margin-top: 12px;
+      }
+      .success-msg {
+        display: none;
+        background: rgba(245, 196, 0, 0.1);
+        border: 1px solid rgba(245, 196, 0, 0.4);
+        border-radius: 12px;
+        padding: 24px;
+        font-size: 15px;
+        color: var(--yellow);
+        max-width: 560px;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 1.6;
+      }
+      .error-inline {
+        font-size: 12px;
+        color: #ff6b6b;
+        margin-top: 6px;
+        display: none;
+      }
+
+      /* post-subscribe stats */
+      .post-stats {
+        display: flex;
+        justify-content: center;
+        gap: 64px;
+        margin-top: 64px;
+        flex-wrap: wrap;
+      }
+      .post-stat-num {
+        font-family: "Syne", sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--yellow);
+        letter-spacing: -1px;
+      }
+      .post-stat-label {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.4);
+        margin-top: 4px;
+      }
+
+      /* ── INVESTISSEURS ── */
+      .investors {
+        background: var(--white);
+      }
+      .investors-header {
+        max-width: 680px;
+        margin-bottom: 56px;
+      }
+      .investors-sub {
+        font-size: 15px;
+        color: var(--gray-600);
+        font-weight: 300;
+        max-width: 580px;
+        margin-top: 12px;
+        line-height: 1.7;
+      }
+      .investors-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+        margin-bottom: 2px;
+      }
+      .investor-stat {
+        background: var(--gray-100);
+        padding: 32px 28px;
+      }
+      .investor-stat-num {
+        font-family: "Syne", sans-serif;
+        font-size: 36px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: var(--black);
+        margin-bottom: 8px;
+      }
+      .investor-stat h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .investor-stat p {
+        font-size: 13px;
+        color: var(--gray-600);
+        font-weight: 300;
+        line-height: 1.5;
+      }
+      .investor-models {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+      }
+      .investor-model {
+        background: var(--gray-100);
+        padding: 28px;
+      }
+      .investor-model-tag {
+        font-family: "Syne", sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        color: var(--yellow-dark);
+        margin-bottom: 10px;
+      }
+      .investor-model h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .investor-model p {
+        font-size: 13px;
+        color: var(--gray-600);
+        font-weight: 300;
+        line-height: 1.5;
+      }
+      .investor-cta {
+        text-align: center;
+        margin-top: 56px;
+        padding-top: 48px;
+        border-top: 1px solid var(--gray-200);
+      }
+      .investor-cta p {
+        font-size: 15px;
+        color: var(--gray-600);
+        font-weight: 300;
+        margin-bottom: 20px;
+      }
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--white);
+        color: var(--black);
+        border: 1.5px solid var(--black);
+        padding: 14px 28px;
+        border-radius: 8px;
+        font-family: "Syne", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background 0.2s;
+      }
+      .btn-outline:hover {
+        background: var(--black);
+        color: var(--white);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--black);
+        color: rgba(255, 255, 255, 0.4);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 32px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 13px;
+      }
+      .footer-logo {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        color: var(--white);
+        font-size: 18px;
+        letter-spacing: -0.3px;
+        text-decoration: none;
+      }
+      .footer-logo span {
+        color: var(--yellow);
+      }
+      .footer-links {
+        display: flex;
+        gap: 24px;
+        list-style: none;
+      }
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.4);
+        text-decoration: none;
+        font-size: 13px;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: var(--white);
+      }
+
+      /* ── ANIMATIONS ── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .solution-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .how-steps-row {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px;
+        }
+        .how-steps-row::before {
+          display: none;
+        }
+        .investors-stats,
+        .investor-models {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 768px) {
+        .hero {
+          padding: 100px 6% 60px;
+        }
+        .hero-stats {
+          gap: 28px;
+        }
+        .problem-layout,
+        .audience-grid {
+          grid-template-columns: 1fr;
+        }
+        .solution-grid {
+          grid-template-columns: 1fr;
+        }
+        .how-steps-row {
+          grid-template-columns: 1fr;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .post-stats {
+          gap: 32px;
+        }
+        section {
+          padding: 72px 6%;
+        }
+        footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="nav-logo"
+        ><span class="nav-logo-dot"></span>Professeur Pixel</a
+      >
+    </nav>
+
+    <section class="hero">
+      <div class="hero-bg-mark"></div>
+      <div class="hero-bg-mark2"></div>
+      <div class="hero-tag">Lancement Montréal — Prévente ouverte</div>
+      <h1>
+        Le soutien scolaire<br />
+        <span class="highlight">intelligent</span><br />
+        pour chaque enfant<br />
+        <em>du Québec.</em>
+      </h1>
+      <p class="hero-sub">
+        Un tuteur IA vocal et personnalisé — disponible à toute heure, sans
+        frais exorbitants, sans biais. Conçu pour les familles québécoises.
+      </p>
+      <div class="hero-actions">
+        <a href="#prevente" class="btn-primary">
+          Rejoindre la prévente — 60 % de rabais
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d="M3 7h8M7 3l4 4-4 4"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+        <a href="#solution" class="btn-ghost">Voir la solution</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">60<span>%</span></div>
+          <div class="stat-label">Rabais membres prévente</div>
+        </div>
+        <div>
+          <div class="stat-num">2M<span>+</span></div>
+          <div class="stat-label">Élèves sans accès au tutorat</div>
+        </div>
+        <div>
+          <div class="stat-num">24<span>/7</span></div>
+          <div class="stat-label">Disponibilité du tuteur IA</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="strip" aria-hidden="true">
+      <div class="strip-inner">
+        <div class="strip-item">
+          <span class="strip-dot">◆</span> Mathématiques
+        </div>
+        <div class="strip-item"><span class="strip-dot">◆</span> Sciences</div>
+        <div class="strip-item"><span class="strip-dot">◆</span> Français</div>
+        <div class="strip-item"><span class="strip-dot">◆</span> Histoire</div>
+        <div class="strip-item">
+          <span class="strip-dot">◆</span> Aide aux devoirs
+        </div>
+        <div class="strip-item">
+          <span class="strip-dot">◆</span> Programme MEES
+        </div>
+        <div class="strip-item">
+          <span class="strip-dot">◆</span> Primaire & Secondaire
+        </div>
+        <div class="strip-item">
+          <span class="strip-dot">◆</span> Tutorat vocal IA
+        </div>
+        <div class="strip-item">
+          <span class="strip-dot">◆</span> Mathématiques
+        </div>
+        <div class="strip-item"><span class="strip-dot">◆</span> Sciences</div>
+        <div class="strip-item"><span class="strip-dot">◆</span> Français</div>
+        <div class="strip-item"><span class="strip-dot">◆</span> Histoire</div>
+        <div class="strip-item">
+          <span class="strip-dot">◆</span> Aide aux devoirs
+        </div>
+        <div class="strip-item">
+          <span class="strip-dot">◆</span> Programme MEES
+        </div>
+        <div class="strip-item">
+          <span class="strip-dot">◆</span> Primaire & Secondaire
+        </div>
+        <div class="strip-item">
+          <span class="strip-dot">◆</span> Tutorat vocal IA
+        </div>
+      </div>
+    </div>
+
+    <section class="problem" id="probleme">
+      <div class="section-label">Le problème</div>
+      <h2 class="section-title">
+        Le soutien scolaire est inaccessible<br />pour la majorité des familles.
+      </h2>
+      <div class="problem-layout">
+        <div class="problem-cards">
+          <div class="problem-card">
+            <div class="problem-icon">
+              <i class="ph ph-chalkboard-teacher"></i>
+            </div>
+            <div>
+              <h3>Pénurie de tuteurs</h3>
+              <p>
+                Le Québec manque cruellement de personnel pour le soutien
+                parascolaire. Les listes d'attente s'allongent chaque année.
+              </p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon"><i class="ph ph-money"></i></div>
+            <div>
+              <h3>Coût prohibitif</h3>
+              <p>
+                Un tuteur privé coûte entre 40 $ et 80 $/h — un luxe hors de
+                portée pour des millions de familles.
+              </p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon"><i class="ph ph-clock"></i></div>
+            <div>
+              <h3>Disponibilité limitée</h3>
+              <p>
+                Les services d'aide aux devoirs ferment à 17h. L'enfant qui
+                bloque à 20h n'a aucun recours.
+              </p>
+            </div>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon"><i class="ph ph-scales"></i></div>
+            <div>
+              <h3>Inégalité des chances</h3>
+              <p>
+                Le code postal d'un enfant ne devrait pas déterminer sa réussite
+                scolaire.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="problem-quote-box">
+          <p class="problem-quote">
+            "Le manque de ressources en soutien scolaire touche en priorité les
+            familles à faible revenu et les régions éloignées."
+          </p>
+          <p class="problem-quote-attr">
+            — Rapport sur l'équité en éducation,
+            <strong>Gouvernement du Québec, 2023</strong>
+          </p>
+          <div class="checklist">
+            <div class="check-item">Disponible 24h/24, 7j/7</div>
+            <div class="check-item">Moins de 15 $/mois</div>
+            <div class="check-item">
+              Basé sur le programme scolaire québécois
+            </div>
+            <div class="check-item">Zéro biais — équitable pour tous</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="solution" id="solution">
+      <div class="solution-header">
+        <div class="section-label">La solution</div>
+        <h2 class="section-title">
+          Tout ce dont votre enfant a besoin<br />pour réussir à l'école.
+        </h2>
+        <p class="solution-sub">
+          Professeur Pixel combine IA de pointe, interface pensée pour les
+          enfants et suivi détaillé pour les parents.
+        </p>
+      </div>
+      <div class="solution-grid">
+        <div class="solution-card">
+          <div class="solution-icon"><i class="ph ph-owl"></i></div>
+          <h3>Tuteur vocal IA — Choupi</h3>
+          <p>
+            Un hibou qui parle à voix haute avec votre enfant. Interface
+            naturelle, sans clavier — idéal pour les 6 à 14 ans.
+          </p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon"><i class="ph ph-file-text"></i></div>
+          <h3>Basé sur le vrai cours</h3>
+          <p>
+            Déposez les notes de classe en PDF, Word ou photo. L'IA se base
+            exactement sur le contenu de l'enseignant.
+          </p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon"><i class="ph ph-chart-bar"></i></div>
+          <h3>Tableau de bord parent</h3>
+          <p>
+            Suivez les progrès, les forces et les lacunes de votre enfant en
+            temps réel, matière par matière.
+          </p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon"><i class="ph ph-game-controller"></i></div>
+          <h3>Apprentissage gamifié</h3>
+          <p>
+            Points XP, badges et objectifs quotidiens gardent l'enfant motivé
+            séance après séance.
+          </p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon"><i class="ph ph-lock"></i></div>
+          <h3>Sécurité & confidentialité</h3>
+          <p>
+            Conforme à la Loi 25 du Québec. Consentement parental obligatoire.
+            Données des mineurs protégées.
+          </p>
+        </div>
+        <div class="solution-card">
+          <div class="solution-icon"><i class="ph ph-scales"></i></div>
+          <h3>Équité & zéro biais</h3>
+          <p>
+            Pas de biais racial, de genre ou socioéconomique. Chaque enfant
+            reçoit la même qualité d'aide.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" id="comment">
+      <div class="how-header">
+        <div class="section-label">Comment ça marche</div>
+        <h2 class="section-title">
+          Simple pour les parents.<br /><em>Magique</em> pour les enfants.
+        </h2>
+      </div>
+      <div class="how-steps-row">
+        <div class="how-step">
+          <div class="how-step-circle"><i class="ph ph-books"></i></div>
+          <div class="how-step-num">Étape 01</div>
+          <h3>Déposer le matériel</h3>
+          <p>
+            Le parent ou l'enseignant dépose les notes de cours, devoirs ou
+            exercices dans l'application.
+          </p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-circle"><i class="ph ph-brain"></i></div>
+          <div class="how-step-num">Étape 02</div>
+          <h3>L'IA apprend</h3>
+          <p>
+            Professeur Pixel analyse le matériel et crée une base de
+            connaissances personnalisée pour l'élève.
+          </p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-circle"><i class="ph ph-owl"></i></div>
+          <div class="how-step-num">Étape 03</div>
+          <h3>L'enfant parle à Choupi</h3>
+          <p>
+            L'élève pose ses questions à voix haute et reçoit des explications
+            claires et encourageantes.
+          </p>
+        </div>
+        <div class="how-step">
+          <div class="how-step-circle"><i class="ph ph-trend-up"></i></div>
+          <div class="how-step-num">Étape 04</div>
+          <h3>Les parents suivent</h3>
+          <p>
+            Après chaque séance, le tableau de bord parent est mis à jour avec
+            progrès et points à travailler.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="audience">
+      <div class="audience-header">
+        <div class="section-label">Pour qui</div>
+        <h2 class="section-title">
+          Familles, écoles et commissions scolaires.
+        </h2>
+      </div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="audience-icon"><i class="ph ph-users"></i></div>
+          <h3>Pour les parents</h3>
+          <p>
+            Vous voulez aider votre enfant mais le programme a changé ?
+            Professeur Pixel devient votre allié pédagogique.
+          </p>
+          <ul class="audience-list">
+            <li>Aide aux devoirs 24h/24</li>
+            <li>Basé sur les vraies notes de classe</li>
+            <li>Rapport de progression hebdomadaire</li>
+            <li>Moins cher qu'une heure de tuteur</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="audience-icon"><i class="ph ph-buildings"></i></div>
+          <h3>Pour les écoles</h3>
+          <p>
+            Offrez à chaque élève un soutien parascolaire de qualité, sans coûts
+            de personnel supplémentaires.
+          </p>
+          <ul class="audience-list">
+            <li>Licences par établissement</li>
+            <li>Intégration avec les notes des enseignants</li>
+            <li>Tableau de bord classe</li>
+            <li>Aligné sur le programme du MEES</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="subscribe-section" id="prevente">
+      <div class="subscribe-badge">
+        Offre prévente — <span>147 places restantes</span>
+      </div>
+      <h2 class="section-title">
+        Soyez parmi les <em>premiers</em><br />à rejoindre Professeur Pixel
+      </h2>
+      <p class="subscribe-desc">
+        Inscrivez-vous maintenant pour bloquer votre accès prioritaire à prix
+        fondateur — un rabais exclusif réservé aux familles qui nous font
+        confiance dès le départ.
+      </p>
+
+      <div class="perks-row">
+        <div class="perk-pill">60 % de rabais à vie</div>
+        <div class="perk-pill">Accès prioritaire au lancement</div>
+        <div class="perk-pill">Infolettre mensuelle exclusive</div>
+        <div class="perk-pill">Influence sur les fonctionnalités</div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-track"><div class="progress-fill"></div></div>
+        <div class="progress-label">
+          <strong>853 / 1 000 places</strong> réservées — il en reste 147
+        </div>
+      </div>
+
+      <div id="formWrap">
+        <div class="subscribe-form-box">
+          <div
+            style="
+              font-family: &quot;Syne&quot;, sans-serif;
+              font-size: 18px;
+              font-weight: 700;
+              color: var(--white);
+              margin-bottom: 6px;
+            "
+          >
+            Réserver ma place en prévente
+          </div>
+          <div
+            style="
+              font-size: 13px;
+              color: rgba(255, 255, 255, 0.4);
+              margin-bottom: 28px;
+            "
+          >
+            Rejoignez 853 familles déjà inscrites sur la liste d'attente
+          </div>
+
+          <div class="form-grid">
+            <div>
+              <label class="form-label">Prénom</label>
+              <input
+                type="text"
+                id="fieldPrenom"
+                class="form-input"
+                placeholder="Marie"
+              />
+            </div>
+            <div>
+              <label class="form-label">Nom de famille</label>
+              <input
+                type="text"
+                id="fieldNom"
+                class="form-input"
+                placeholder="Tremblay"
+              />
+            </div>
+            <div class="form-full">
+              <label class="form-label">Adresse courriel</label>
+              <input
+                type="email"
+                id="fieldEmail"
+                class="form-input"
+                placeholder="marie.tremblay@exemple.com"
+              />
+              <div class="error-inline" id="emailError">
+                Veuillez entrer une adresse courriel valide.
+              </div>
+            </div>
+            <div>
+              <label class="form-label">Vous êtes</label>
+              <select id="fieldRole" class="form-select">
+                <option value="Un parent">Un parent</option>
+                <option value="Un enseignant">Un enseignant</option>
+                <option value="Un directeur d'école">
+                  Un directeur d'école
+                </option>
+                <option value="Un investisseur">Un investisseur</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Ville</label>
+              <input
+                type="text"
+                id="fieldVille"
+                class="form-input"
+                placeholder="Montréal"
+              />
+            </div>
+          </div>
+
+          <div class="form-consent">
+            <input type="checkbox" id="consentCheck" />
+            <p>
+              En m'inscrivant, je confirme faire partie de la liste de prévente
+              de Professeur Pixel et comprends que je bénéficierai d'un
+              <strong>rabais exclusif de 60 % à vie</strong> sur mon abonnement
+              lors du lancement. J'accepte de recevoir
+              <strong>une infolettre mensuelle</strong> avec les mises à jour.
+              Je peux me désinscrire à tout moment. Données protégées
+              conformément à la <a href="#">Loi 25 du Québec</a>.
+            </p>
+          </div>
+
+          <button class="subscribe-btn" onclick="submitForm()">
+            Réserver ma place — Gratuit et sans engagement
+          </button>
+          <div class="form-note">
+            Aucune carte de crédit requise. Aucun engagement. Vos données ne
+            seront jamais vendues.
+          </div>
+        </div>
+      </div>
+
+      <div class="success-msg" id="successMsg">
+        ✦ &nbsp;Votre place est réservée ! Nous vous contacterons bientôt avec
+        vos accès fondateur.
+      </div>
+
+      <div class="post-stats">
+        <div>
+          <div class="post-stat-num">853</div>
+          <div class="post-stat-label">Familles inscrites</div>
+        </div>
+        <div>
+          <div class="post-stat-num">147</div>
+          <div class="post-stat-label">Places restantes</div>
+        </div>
+        <div>
+          <div class="post-stat-num">60%</div>
+          <div class="post-stat-label">De rabais garanti</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="investors" id="investisseurs">
+      <div class="investors-header">
+        <div class="section-label">Pour les investisseurs</div>
+        <h2 class="section-title">
+          Une opportunité de marché<br />de plusieurs milliards de dollars.
+        </h2>
+        <p class="investors-sub">
+          Le marché mondial du tutorat en ligne atteindra 21,4 G$ USD d'ici
+          2027. Professeur Pixel se positionne dès maintenant sur le Québec avec
+          une vision pancanadienne.
+        </p>
+      </div>
+      <div class="investors-stats">
+        <div class="investor-stat">
+          <div class="investor-stat-num">2M+</div>
+          <h3>Élèves au primaire et secondaire au Québec</h3>
+          <p>
+            Marché adressable immédiat — familles cherchant activement des
+            solutions de soutien scolaire accessibles.
+          </p>
+        </div>
+        <div class="investor-stat">
+          <div class="investor-stat-num">21G$</div>
+          <h3>Marché mondial du tutorat en ligne</h3>
+          <p>
+            Secteur en croissance rapide, accéléré par la pénurie d'enseignants
+            et la démocratisation de l'IA.
+          </p>
+        </div>
+        <div class="investor-stat">
+          <div class="investor-stat-num">$0</div>
+          <h3>Frais de transaction vs tuteurs humains</h3>
+          <p>
+            Modèle SaaS à abonnement générant des revenus récurrents prévisibles
+            sans variables de personnel.
+          </p>
+        </div>
+      </div>
+      <div class="investor-models">
+        <div class="investor-model">
+          <div class="investor-model-tag">B2C</div>
+          <h3>Familles — abonnement mensuel direct</h3>
+          <p>
+            Acquisition directe via les parents, avec coûts réduits grâce au
+            bouche-à-oreille scolaire.
+          </p>
+        </div>
+        <div class="investor-model">
+          <div class="investor-model-tag">B2B</div>
+          <h3>Écoles et commissions scolaires</h3>
+          <p>
+            Contrats institutionnels à haute valeur avec cycles de
+            renouvellement annuels et faible churn.
+          </p>
+        </div>
+        <div class="investor-model">
+          <div class="investor-model-tag">B2G</div>
+          <h3>Subventions gouvernementales</h3>
+          <p>
+            Notre mission d'équité s'aligne directement avec les programmes du
+            MEES pour l'accès à l'éducation.
+          </p>
+        </div>
+      </div>
+      <div class="investor-cta">
+        <p>
+          Vous souhaitez en savoir plus sur les opportunités d'investissement ?
+        </p>
+        <a href="mailto:investisseurs@professeurpixel.ca" class="btn-outline">
+          Nous contacter — investisseurs@professeurpixel.ca
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <a href="#" class="footer-logo">Professeur <span>Pixel</span></a>
+      <span
+        >© 2026 Professeur Pixel Inc. — Montréal, Québec. Tous droits
+        réservés.</span
+      >
+      <ul class="footer-links">
+        <li><a href="#">Confidentialité</a></li>
+        <li><a href="#">Conditions</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </footer>
+
+    <script>
+      // ─────────────────────────────────────────────────────────
+      // GOOGLE FORMS SETUP
+      //
+      // 1. Create a Google Form with these fields:
+      //    - Prénom (Short answer)
+      //    - Nom de famille (Short answer)
+      //    - Adresse courriel (Short answer)
+      //    - Vous êtes (Dropdown)
+      //    - Ville (Short answer)
+      //
+      // 2. Click ⋮ → "Get pre-filled link", fill dummy values,
+      //    copy the resulting URL, then extract:
+      //    - FORM_ID (between /d/e/ and /viewform)
+      //    - Each entry ID (entry.XXXXXXXXXX)
+      //
+      // 3. Replace the values below:
+      // ─────────────────────────────────────────────────────────
+      const GOOGLE_FORM_ACTION =
+        "https://docs.google.com/forms/d/e/1FAIpQLSfa6bbJ_3QekIMU18-ewP9UtkIhOoZFp3A9vCReKYMtgDWwOA/formResponse";
+
+      const FIELDS = {
+        prenom: "entry.633773947",
+        nom: "entry.2081543693",
+        email: "entry.1737916878",
+        role: "entry.1750413502",
+        ville: "entry.1687858040",
+      };
+
+      async function submitForm() {
+        const prenom = document.getElementById("fieldPrenom").value.trim();
+        const nom = document.getElementById("fieldNom").value.trim();
+        const email = document.getElementById("fieldEmail").value.trim();
+        const role = document.getElementById("fieldRole").value;
+        const ville = document.getElementById("fieldVille").value.trim();
+        const consent = document.getElementById("consentCheck").checked;
+
+        const emailErr = document.getElementById("emailError");
+        emailErr.style.display = "none";
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          emailErr.style.display = "block";
+          return;
+        }
+        if (!consent) {
+          alert("Veuillez accepter les conditions pour continuer.");
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append(FIELDS.prenom, prenom);
+        formData.append(FIELDS.nom, nom);
+        formData.append(FIELDS.email, email);
+        formData.append(FIELDS.role, role);
+        formData.append(FIELDS.ville, ville);
+
+        try {
+          await fetch(GOOGLE_FORM_ACTION, {
+            method: "POST",
+            mode: "no-cors",
+            body: formData,
+          });
+        } catch (_) {}
+
+        document.getElementById("formWrap").style.display = "none";
+        const success = document.getElementById("successMsg");
+        success.style.display = "block";
+      }
+
+      // Enter key on email field
+      document.getElementById("fieldEmail").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") submitForm();
+      });
+    </script>
+  </body>
+</html>
